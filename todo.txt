@@ -1,0 +1,4 @@
+!roll 2d20kh1 - Advantage
+!roll 2d20kl1 - Disadvantage
+!roll 2d20kh1+7 - Advantage + Bonus
+!roll 2d20kl1+7 - Disadvantage + bonus

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Card</title>
+    <style>
+        body {margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #eaeaea; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
+        .card {max-width: 450px; width: 100%; margin-left: 250px; border-radius: 10px; padding: 20px; background: #fff; display: flex; flex-wrap: wrap; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1); transition: transform 0.3s;}
+        .card:hover {transform: scale(1.03);}
+        .profile-container, .stats, .inventory {flex: 1;}
+        .profile-container {display: flex; flex-direction: column; align-items: center; margin-right: 0px;}
+        .profile {width: 120px; height: 120px; background: #333; border-radius: 50%; overflow: hidden; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);}
+        .profile img {width: 100%; height: 100%; object-fit: cover;}
+        .profile-name, .hp {font-weight: 600; margin-top: 10px; text-align: center; font-size: 1.2rem; color: #333;}
+        .stat-row {display: flex; justify-content: space-around; margin-bottom: 10px;}
+        .stat, .misc-item {color: #555; padding: 5px; background: #f9f9f9; border-radius: 8px; cursor: pointer; transition: all 0.3s;}
+        .stat:hover, .misc-item:hover {background: #f0f0f0;}
+        .item {display: flex; align-items: center; padding: 5px; background: #f9f9f9; border-radius: 8px; transition: all 0.3s; cursor: pointer;}
+        .item:hover {background: #f0f0f0;}
+        .item-img {width: 40px; height: 40px; background: #ccc; margin-right: 10px; border-radius: 4px; overflow: hidden;}
+        .item-img img {width: 100%; height: 100%; object-fit: cover;}
+        .misc {display: flex; justify-content: space-around; width: 100%; margin-top: 20px;}
+        .commands-card {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            width: 300px;
+            padding: 15px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .commands-card h2 {
+            margin: 0 0 10px 0;
+            font-size: 1.5rem;
+            color: #333;
+        }
+        .command-item {
+            color: #555;
+            padding: 5px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            margin-bottom: 5px;
+        }
+        .command-item:last-child {
+            margin-bottom: 0;
+        }
+        .input-container {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .input-command {
+            flex: 1;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 5px;
+        }
+        .copy-btn {
+            padding: 5px 10px;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .copy-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="profile-container">
+            <div class="profile">
+                <img src="heather.jpg" alt="Heather's Profile">
+            </div>
+            <div class="profile-name">Heather</div>
+            <br>
+            <div class="hp">HP: 8/8</div>
+        </div>
+        <div class="stats">
+            <div class="stat-row">
+                <div class="stat">STE 3</div>
+                <div class="stat">AGI 4</div>
+            </div>
+            <div class="stat-row">
+                <div class="stat">END 2</div>
+                <div class="stat">INT 3</div>
+            </div>
+            <div class="stat-row">
+                <div class="stat">MAR 0</div>
+                <div class="stat">STR 1</div>
+            </div>
+            <div class="stat-row">
+                <div class="stat">PER 5/7</div>
+            </div>
+            <div class="stat-row">
+                <div class="stat">CHA 4</div>
+            </div>
+        </div>
+        <div class="inventory">
+            <div class="item"><div class="item-img"><img src="radio.jpg" alt=""></div>Hand Radio</div>
+            <div class="item"><div class="item-img"><img src="lighter.jpg" alt=""></div>Lighter & Weed</div>
+            <div class="item"><div class="item-img"><img src="notepad.jpg" alt=""></div>Notepad & Pencil</div>
+            <div class="item"><div class="item-img"><img src="camera.jpg" alt=""></div>Canon A1 Camera</div>
+        </div>
+        <div class="misc">
+            <div class="misc-item">Car Fuel: Full</div>
+            <div class="misc-item">BAC: 0.0%</div>
+            <div class="misc-item">THC: 0 ng/mL</div>
+        </div>
+    </div>
+    <div class="commands-card">
+        <h2>Commands</h2>
+        <div class="command-item">!roll d20 - Regular</div>
+        <div class="command-item">!roll 2d20kh1 - Advantage</div>
+        <div class="command-item" data-command="!roll 2d20kl1">!roll 2d20kl1 - Disadvantage</div>
+        <div class="command-item">!roll 2d20kh1+7 - Advantage + Bonus</div>
+        <div class="command-item" data-command="!roll 2d20kl1+7">!roll 2d20kl1+7 - Disadvantage + Bonus</div>
+        <div class="input-container">
+            <input type="text" class="input-command" value="Click a Stat">
+            <button class="copy-btn">Copy</button>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // Hover functionality for stat, item, and misc-item
+            $('.stat, .item, .misc-item').hover(function(){
+                $(this).toggleClass('highlight');
+            });
+    
+            // Click functionality for items
+            $('.item').click(function(){
+                alert('Item: ' + $(this).text());
+            });
+    
+            // Click functionality for stats
+            $('.stat').click(function() {
+                var statValue = $(this).text().split(' ')[1];
+                if (statValue.includes('/')) {
+                    statValue = statValue.split('/')[0]; // Single click, first value
+                }
+                var command = `!roll 2d20kh1+${statValue}`;
+                $('.input-command').val(command);
+            });
+    
+            // Double click functionality for "PER 5/7"
+            $('.stat:contains("PER")').dblclick(function() {
+                var statValue = $(this).text().split(' ')[1];
+                if (statValue.includes('/')) {
+                    statValue = statValue.split('/')[1]; // Double click, second value
+                }
+                var command = `!roll 2d20kh1+${statValue}`;
+                $('.input-command').val(command);
+            });
+    
+            // Click functionality for command items
+            $('.command-item').click(function() {
+                var command = $(this).data('command') || $(this).text().trim();
+                $('.input-command').val(command);
+            });
+    
+            // Copy button functionality
+            $('.copy-btn').click(function() {
+                var copyText = $(this).siblings('.input-command');
+                copyText.select();
+                document.execCommand('copy');
+            });
+        });
+    </script>
+    
+</body>
+</html>
