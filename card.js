@@ -21,7 +21,7 @@ export default {
     misc: [
         "Car Fuel: Full",
         "BAC: 0.0%",
-        "THC: 1 ng/mL",
+        "THC: 0 ng/mL",
         "Battery: 76%",
         "Tryptamines: 0mg"
     ]
