@@ -6,7 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const dataPoints = [
         { time: '4:15 PM', date: '10/30', thcLevel: 6 },
         { time: '5:30 PM', date: '10/30', thcLevel: 4 },
-        { time: '6:00 PM', date: '10/30', thcLevel: 1 }
+        { time: '6:00 PM', date: '10/30', thcLevel: 1 },
+        { time: '6:30 PM', date: '10/30', thcLevel: 0 }
     ];
 
     // Function to draw the graph
